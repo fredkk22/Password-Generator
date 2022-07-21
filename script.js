@@ -177,7 +177,7 @@ return passwordResult;
 // var randNum = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 // var userChoices = [];
 
-var passwordResult;
+var passwordResult = "";
 var userChoices = [];
 
 function generatePassword() {
@@ -190,56 +190,35 @@ function generatePassword() {
   var randLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z"];
   var randSpecChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "_", "`", "{", "|", "}", "~"];
   var randNum = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-  function generateRandLower() {
-    randLower[Math.floor(Math.random() * randLower.length)];
-  }
   
-  function generateRandNum() {
-    randNum[Math.floor(Math.random() * randNum.length)];
-  }
-  
-  function generateRandSpecChar() {
-    randSpecChar[Math.floor(Math.random() * randSpecChar.length)];
-  }
-  
-  function generateRandUpper() {
-    randUpper[Math.floor(Math.random() * randUpper.length)];
-  }  
-
-  generateRandLower()
-  generateRandUpper()
-  generateRandNum()
-  generateRandSpecChar()
-
   passwordLength = prompt("Please enter the length of your desired password.");
 
-  if (passwordLength < 8 || passwordLength > 128) {
-    alert("Please enter a length between 8 and 128");
+  if (!passwordLength) {
     return;
   } else if (8 <= passwordLength || passwordLength <= 128) {
     userChoices.length = passwordLength;
   } else {
+    alert("Please enter a length between 8 and 128");
     return;
   }
 
   if (confirm(confirmPasswordUpper) === true) {
-    userChoices.push.apply(randUpper);
+    userChoices.push(randUpper);
+  } if (confirm(confirmPasswordLower) === true) {
+    userChoices.push(randLower);
+  } if (confirm(confirmPasswordNum) === true) {
+    userChoices.push(randNum);
+  } if (confirm(confirmPasswordSpec) === true) {
+    userChoices.push(randSpecChar);
+  } else {
+    alert("Please pick at least one!");
+    return;
   }
 
-  if (confirm(confirmPasswordLower) === true) {
-    userChoices.push.apply(randLower);
+  function generateRandUpper() {
+    randUpper[(Math.floor(Math.random()*26) + 65)]
   }
-
-  if (confirm(confirmPasswordNum) === true) {
-    userChoices.push.apply(randNum);
-  }
-
-  if (confirm(confirmPasswordSpec) === true) {
-    userChoices.push.apply(randSpecChar);
-  }
-
-  passwordResult = userChoices.toString();
+  
 }
 
 // Write password to the #password input
