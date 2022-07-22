@@ -34,6 +34,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 https://codeburst.io/jsnoob-push-vs-concat-basics-and-performance-comparison-7a4b55242fa9
 
+https://owasp.org/index.php/Password_special_characters
+
 ## Link to Deployed Application
 
 https://fredkk22.github.io/Password-Generator/
